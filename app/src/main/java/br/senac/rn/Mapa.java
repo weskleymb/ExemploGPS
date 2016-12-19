@@ -26,16 +26,15 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
-//        location = (Location) intent.get("localizacao");
-        // Add a marker in Sydney and move the camera
+//         Add a marker in Sydney and move the camera
 //        LatLng sydney = new LatLng(-34, 111);
-//        LatLng sydney = new LatLng(location.getLatitude(), location.getLongitude());
-//        System.out.println(location.getAltitude());
 
         args = getIntent().getParcelableExtra("args");
         LatLng localizacao = args.getParcelable("localizacao");
         mMap.addMarker(new MarkerOptions().position(localizacao).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(localizacao));
+//        value between minimum value=2.0 and maximum value=21.0
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(localizacao, 12f));
 
     }
 
